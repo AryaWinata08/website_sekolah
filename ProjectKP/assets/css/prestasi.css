@@ -1,0 +1,75 @@
+.prestasi-section {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  padding: 30px 24px;
+}
+
+.prestasi-section h2 {
+  color: #18bc9c;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.prestasi-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.prestasi-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  width: 280px;
+  padding: 20px 16px 16px 16px;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prestasi-card:hover {
+  box-shadow: 0 6px 24px rgba(24,188,156,0.13);
+  transform: translateY(-6px) scale(1.03);
+}
+
+.prestasi-foto {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #18bc9c;
+  background: #fff;
+}
+
+.prestasi-card h3 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 1.08rem;
+}
+
+.prestasi-nama {
+  color: #18bc9c;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 4px;
+}
+
+@media (max-width: 700px) {
+  .prestasi-list {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .prestasi-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}

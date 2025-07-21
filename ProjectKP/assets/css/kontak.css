@@ -1,0 +1,81 @@
+.kontak-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 960px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  padding: 30px;
+}
+
+.kontak-info, .kontak-form {
+  flex: 1 1 320px;
+  min-width: 280px;
+}
+
+.kontak-info h2, .kontak-form h2 {
+  color: #18bc9c;
+  margin-bottom: 15px;
+}
+
+.kontak-info ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.kontak-info ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.kontak-info i {
+  color: #18bc9c;
+  margin-right: 10px;
+}
+
+.kontak-maps iframe {
+  border-radius: 8px;
+  width: 100%;
+  height: 200px;
+}
+
+.kontak-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.kontak-form input,
+.kontak-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: none;
+}
+
+.kontak-form button {
+  background: #18bc9c;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.kontak-form button:hover {
+  background: #149174;
+}
+
+@media (max-width: 800px) {
+  .kontak-section {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+}

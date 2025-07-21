@@ -1,0 +1,80 @@
+.agenda-section {
+  max-width: 960px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  padding: 30px;
+}
+
+.agenda-section h2 {
+  color: #18bc9c;
+  margin-bottom: 25px;
+}
+
+.agenda-list {
+  list-style: none;
+  padding: 0;
+}
+
+.agenda-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+
+.agenda-list li:hover {
+  box-shadow: 0 4px 16px rgba(24,188,156,0.10);
+}
+
+.agenda-date {
+  width: 60px;
+  text-align: center;
+  background: #18bc9c;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.agenda-day {
+  font-size: 2rem;
+  display: block;
+}
+
+.agenda-month {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.agenda-info h3 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+}
+
+.agenda-info p {
+  margin: 2px 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+  .agenda-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 10px;
+  }
+  .agenda-date {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
