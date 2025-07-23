@@ -82,5 +82,6 @@ startAutoSlide();
 document.querySelector('.slider-container').addEventListener('mouseenter', stopAutoSlide);
 document.querySelector('.slider-container').addEventListener('mouseleave', startAutoSlide);
 </script>
+<?php include 'footer.php'; ?>
 </body>
 </html>

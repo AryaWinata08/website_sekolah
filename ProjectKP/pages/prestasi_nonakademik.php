@@ -22,27 +22,24 @@
       <h2>Daftar Prestasi Non Akademik</h2>
       <div class="prestasi-list">
         <div class="prestasi-card">
-            <img src="../assets/images/prestasi3.jpg" class="prestasi-foto">
+            <img src="../assets/images/SMAN2.jpg" class="prestasi-foto">
           <h3>Juara 1 Lomba Futsal Antar SMA Kabupaten</h3>
           <p>2024 - Tim Futsal SMAN 2 Singkep</p>
         </div>
         <div class="prestasi-card">
-            <img src="../assets/images/prestasi3.jpg" class="prestasi-foto">
+            <img src="../assets/images/SMAN2.jpg" class="prestasi-foto">
           <h3>Juara 2 Lomba Pramuka Tingkat Provinsi</h3>
           <p>2023 - Regu Pramuka SMAN 2 Singkep</p>
         </div>
         <div class="prestasi-card">
-            <img src="../assets/images/prestasi3.jpg" class="prestasi-foto">
+            <img src="../assets/images/SMAN2.jpg" class="prestasi-foto">
           <h3>Juara 3 Lomba Tari Tradisional</h3>
           <p>2023 - Ekstrakurikuler Tari</p>
         </div>
         <!-- Tambahkan prestasi non akademik lainnya di sini -->
       </div>
     </section>
+    <?php include 'footer.php'; ?>
   </main>
-
-  <footer>
-    <p>&copy; 2025 SMAN 2 SINGKEP. All rights reserved.</p>
-  </footer>
 </body>
 </html>

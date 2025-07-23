@@ -1,0 +1,52 @@
+.struktur-section {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  padding: 30px;
+}
+
+.struktur-section h2 {
+  color: #18bc9c;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.struktur-img {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.struktur-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(24,188,156,0.10);
+}
+
+.struktur-list ul {
+  list-style: none;
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.struktur-list li {
+  margin-bottom: 12px;
+  font-size: 1.08rem;
+  color: #333;
+}
+
+.struktur-list strong {
+  color: #18bc9c;
+}
+
+@media (max-width: 700px) {
+  .struktur-section {
+    padding: 15px 5px;
+  }
+  .struktur-img img {
+    border-radius: 6px;
+  }
+}

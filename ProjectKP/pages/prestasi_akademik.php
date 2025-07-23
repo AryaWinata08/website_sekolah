@@ -22,27 +22,24 @@
       <h2>Daftar Prestasi Akademik</h2>
       <div class="prestasi-list">
         <div class="prestasi-card">
-          <img src="../assets/images/prestasi1.jpg" alt="Andi Saputra" class="prestasi-foto">
+          <img src="../assets/images/SMAN2.jpg" alt="Andi Saputra" class="prestasi-foto">
           <h3>Juara 1 Olimpiade Matematika Tingkat Kabupaten</h3>
           <p class="prestasi-nama">Andi Saputra</p>
         </div>
         <div class="prestasi-card">
-          <img src="../assets/images/prestasi2.jpg" alt="Siti Rahmawati" class="prestasi-foto">
+          <img src="../assets/images/SMAN2.jpg" alt="Siti Rahmawati" class="prestasi-foto">
           <h3>Juara 2 Lomba Cerdas Cermat IPA Provinsi</h3>
           <p class="prestasi-nama">Siti Rahmawati</p>
         </div>
         <div class="prestasi-card">
-          <img src="../assets/images/prestasi3.jpg" alt="Budi Santoso" class="prestasi-foto">
+          <img src="../assets/images/SMAN2.jpg" alt="Budi Santoso" class="prestasi-foto">
           <h3>Finalis KSN (Kompetisi Sains Nasional) Bidang Fisika</h3>
           <p class="prestasi-nama">Budi Santoso</p>
         </div>
         <!-- Tambahkan prestasi lain sesuai kebutuhan -->
       </div>
     </section>
+    <?php include 'footer.php'; ?>
   </main>
-
-  <footer>
-    <p>&copy; 2025 SMAN 2 SINGKEP. All rights reserved.</p>
-  </footer>
 </body>
 </html>

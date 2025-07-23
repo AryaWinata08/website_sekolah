@@ -57,10 +57,7 @@
         <!-- Tambahkan agenda lain sesuai kebutuhan -->
       </ul>
     </section>
+    <?php include 'footer.php'; ?>
   </main>
-
-  <footer>
-    <p>&copy; 2025 SMAN 2 SINGKEP. All rights reserved.</p>
-  </footer>
 </body>
 </html>

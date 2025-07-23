@@ -22,7 +22,7 @@
       <h2>Informasi & Berita Terbaru</h2>
       <div class="berita-list">
         <div class="berita-card">
-          <img src="../assets/images/berita1.jpg" alt="MPLS 2025" class="berita-img">
+          <img src="../assets/images/SMAN2.jpg" alt="MPLS 2025" class="berita-img">
           <div class="berita-info">
             <h3>MPLS 2025 Berjalan Lancar</h3>
             <span class="berita-date"><i class="fa fa-calendar"></i> 22 Juli 2025</span>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="berita-card">
-          <img src="../assets/images/berita2.jpg" alt="Juara Futsal" class="berita-img">
+          <img src="../assets/images/SMAN2.jpg" alt="Juara Futsal" class="berita-img">
           <div class="berita-info">
             <h3>Tim Futsal Raih Juara 1 Tingkat Kabupaten</h3>
             <span class="berita-date"><i class="fa fa-calendar"></i> 10 Juni 2025</span>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="berita-card">
-          <img src="../assets/images/berita3.jpg" alt="Literasi" class="berita-img">
+          <img src="../assets/images/SMAN2.jpg" alt="Literasi" class="berita-img">
           <div class="berita-info">
             <h3>Gerakan Literasi Sekolah</h3>
             <span class="berita-date"><i class="fa fa-calendar"></i> 5 Mei 2025</span>
@@ -48,10 +48,7 @@
         <!-- Tambahkan berita lain sesuai kebutuhan -->
       </div>
     </section>
+    <?php include 'footer.php'; ?>
   </main>
-
-  <footer>
-    <p>&copy; 2025 SMAN 2 SINGKEP. All rights reserved.</p>
-  </footer>
 </body>
 </html>

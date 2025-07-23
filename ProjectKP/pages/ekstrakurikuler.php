@@ -19,42 +19,39 @@
       <h2>Kegiatan Ekstrakurikuler SMAN 2 Singkep</h2>
       <div class="ekstra-list">
         <div class="ekstra-card">
-          <img src="../assets/images/pramuka.jpg" alt="Pramuka">
+          <img src="../assets/images/SMAN2.jpg" alt="Pramuka">
           <h3>Pramuka</h3>
           <p>Mengembangkan jiwa kepemimpinan, kemandirian, dan cinta alam melalui kegiatan kepramukaan.</p>
         </div>
         <div class="ekstra-card">
-          <img src="../assets/images/paskibra.jpg" alt="Paskibra">
+          <img src="../assets/images/SMAN2.jpg" alt="Paskibra">
           <h3>Paskibra</h3>
           <p>Melatih kedisiplinan dan kekompakan dalam baris-berbaris serta upacara bendera.</p>
         </div>
         <div class="ekstra-card">
-          <img src="../assets/images/pmr.jpg" alt="PMR">
+          <img src="../assets/images/SMAN2.jpg" alt="PMR">
           <h3>PMR</h3>
           <p>Palang Merah Remaja, belajar pertolongan pertama dan kegiatan sosial kemanusiaan.</p>
         </div>
         <div class="ekstra-card">
-          <img src="../assets/images/osis.jpg" alt="OSIS">
+          <img src="../assets/images/SMAN2.jpg" alt="OSIS">
           <h3>OSIS</h3>
           <p>Organisasi Siswa Intra Sekolah, wadah pengembangan kepemimpinan dan kreativitas siswa.</p>
         </div>
         <div class="ekstra-card">
-          <img src="../assets/images/englishclub.jpg" alt="English Club">
+          <img src="../assets/images/SMAN2.jpg" alt="English Club">
           <h3>English Club</h3>
           <p>Meningkatkan kemampuan bahasa Inggris melalui diskusi, lomba, dan kegiatan kreatif.</p>
         </div>
         <div class="ekstra-card">
-          <img src="../assets/images/futsal.jpg" alt="Futsal">
+          <img src="../assets/images/SMAN2.jpg" alt="Futsal">
           <h3>Futsal</h3>
           <p>Ekstrakurikuler olahraga futsal untuk menyalurkan bakat dan menjaga kebugaran.</p>
         </div>
         <!-- Tambahkan ekstrakurikuler lain sesuai kebutuhan -->
       </div>
     </section>
+    <?php include 'footer.php'; ?>
   </main>
-
-  <footer>
-    <p>&copy; 2025 SMAN 2 SINGKEP. All rights reserved.</p>
-  </footer>
 </body>
 </html>

@@ -13,8 +13,9 @@
         <ul>
           <li><a href="profil_sekolah.php">Profil Sekolah</a></li>
           <li><a href="visi_misi.php">Visi & Misi</a></li>
-          <li><a href="#">Struktur Organisasi</a></li>
-          <li><a href="#">Staf Pengajar</a></li>
+          <li><a href="struktur_organisasi.php">Struktur Organisasi</a></li>
+          <li><a href="tenagakependidikan.php">Staf Pengajar</a></li>
+          <li><a href="pesertadidik.php">Peserta Didik</a></li>
         </ul>
       </li>
       <li><a href="berita.php">Berita</a></li>
