@@ -54,3 +54,52 @@ section h2 {
   color: #2c3e50;
   margin-bottom: 10px;
 }
+
+.sambutan-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  margin: 40px auto;
+  max-width: 900px;
+}
+
+.sambutan-foto img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #18bc9c;
+  box-shadow: 0 2px 8px rgba(24,188,156,0.10);
+  background: #fff;
+}
+
+.sambutan-text {
+  flex: 1 1 300px;
+}
+
+.sambutan-text h2 {
+  color: #18bc9c;
+  margin-bottom: 12px;
+}
+
+.sambutan-nama {
+  margin-top: 18px;
+  color: #2c3e50;
+}
+
+@media (max-width: 700px) {
+  .sambutan-section {
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px 8px;
+  }
+  .sambutan-foto img {
+    width: 110px;
+    height: 110px;
+  }
+}

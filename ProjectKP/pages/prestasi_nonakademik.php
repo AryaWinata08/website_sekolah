@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/navbar.css">
-<link rel="stylesheet" href="../assets/css/prestasi.css">
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -10,6 +8,8 @@
   <title>Prestasi Non Akademik | SMAN 2 SINGKEP</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/navbar.css">
+  <link rel="stylesheet" href="../assets/css/prestasi.css">
 </head>
 <body>
   <header>

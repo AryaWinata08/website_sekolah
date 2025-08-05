@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/navbar.css">
-<link rel="stylesheet" href="../assets/css/home.css">
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -10,6 +8,8 @@
   <title>SMAN 2 SINGKEP</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/navbar.css">
+  <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 <body>
   <header>
@@ -29,7 +29,7 @@
   <main>
     <section id="profil-sekolah">
       <h2>Profil Sekolah</h2>
-      <p>SMAN 2 SINGKEP adalah sekolah menengah atas yang berkomitmen untuk memberikan pendidikan berkualitas dan membentuk generasi muda yang berprestasi, berkarakter, dan siap menghadapi tantangan global.</p>
+      <p>Selamat datang di SMA NEGERI 2 SINGKEP, tempat di mana pendidikan, karakter, dan inovasi bertemu untuk menciptakan generasi unggul yang siap menghadapi tantangan global. Saya [Nama Kepala Sekolah], Kepala Sekolah SMA NEGERI 2 SINGKEP. Dengan bangga, saya mengundang Anda untuk mengenal lebih dekat lingkungan sekolah kami yang inspiratif.</p>
     </section>
     <section id="informasi">
       <h2>Informasi Umum</h2>
@@ -41,6 +41,20 @@
         <li>Kontak & Lokasi</li>
       </ul>
     </section>
+<section class="sambutan-section">
+  <div class="sambutan-foto">
+    <img src="../assets/images/KEPSEK.png" alt="Kepala Sekolah SMAN 2 Singkep">
+  </div>
+  <div class="sambutan-text">
+    <h2>Sambutan Kepala Sekolah</h2>
+    <p>
+      Assalamu’alaikum Warahmatullahi Wabarakatuh.<br><br>
+      Selamat datang di website resmi SMAN 2 Singkep. Kami berkomitmen memberikan pendidikan terbaik, membentuk karakter, dan menyiapkan generasi muda yang unggul, berakhlak mulia, serta berwawasan lingkungan. Semoga website ini menjadi sarana informasi dan komunikasi yang bermanfaat bagi seluruh warga sekolah dan masyarakat.<br><br>
+      Wassalamu’alaikum Warahmatullahi Wabarakatuh.
+    </p>
+    <p class="sambutan-nama"><strong>Ibu Dewi Lestari, S.Pd</strong><br>Kepala Sekolah</p>
+  </div>
+</section>
   </main>
 
   <footer>
