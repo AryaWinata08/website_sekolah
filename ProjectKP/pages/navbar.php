@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/navbar.css">
-
 <nav class="navbar">
   <div class="navbar-logo">
-    <img src="../assets/images/logosma.png" alt="Logo SMAN 2 SINGKEP">
+    <a href="home.php">
+      <img src="../assets/images/logosma.png" alt="Logo SMAN 2 SINGKEP">
+    </a>
+    <h1>SMA Negeri 2 Singkep</h1>
   </div>
   <div class="navbar-menu">
     <ul>

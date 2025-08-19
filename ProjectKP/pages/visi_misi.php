@@ -1,4 +1,13 @@
+<?php 
+require_once '../db_conn.php';
 
+// Ambil data visi dan misi dari database
+$result = $conn->query("SELECT * FROM visi_misi WHERE id = 1");
+$data = $result->fetch_assoc();
+
+// Ubah string misi menjadi array
+$misi_list = explode("\n", $data['misi']);
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -14,7 +23,6 @@
 <body>
   <header>
     <?php include 'navbar.php'; ?>
-    <h1>Visi & Misi</h1>
   </header>
 
   <main>
@@ -22,22 +30,15 @@
       <div class="visi-block">
         <h2 class="visi-title">VISI</h2>
         <p class="visi-text">
-          <strong>MEWUJUDKAN INSAN YANG BERAKHLAK MULIA, BERPRESTASI, MANDIRI DAN BERWAWASAN LINGKUNGAN</strong>
+          <strong><?php echo htmlspecialchars($data['visi']); ?></strong>
         </p>
       </div>
       <div class="misi-block">
         <h2 class="misi-title">MISI</h2>
         <ol class="misi-list">
-          <li>Mewujudkan murid yang memiliki profil pelajar Pancasila.</li>
-          <li>Melaksanakan pembelajaran dan bimbingan secara efektif sehingga setiap murid dapat mengembangkan potensi yang dimiliki dengan optimal.</li>
-          <li>Meningkatkan kualitas dan kuantitas murid berlandaskan semangat kerja keras.</li>
-          <li>Membentuk insan yang berbudaya dengan sikap dan sopan santun dalam berbicara, berbuat, dan bertindak.</li>
-          <li>Membentuk sikap saling menghargai serta berbudi pekerti luhur, disiplin dan taat pada aturan agama ataupun norma-norma yang berlaku di masyarakat.</li>
-          <li>Mewujudkan 6 K (Kebersihan, Keindahan, Kerindangan, Ketertiban, Keamanan dan Kenyamanan).</li>
-          <li>Mengembangkan budaya literasi, numerasi, dan teknologi.</li>
-          <li>Mengembangkan budaya menghargai lingkungan, mencegah terjadinya pencemaran dan kerusakan lingkungan hidup.</li>
-          <li>Meningkatkan kepedulian warga sekolah terhadap lingkungan dan budaya hidup sehat.</li>
-          <li>Mewujudkan sekolah ramah anak.</li>
+          <?php foreach ($misi_list as $misi_item): ?>
+            <li><?php echo htmlspecialchars($misi_item); ?></li>
+          <?php endforeach; ?>
         </ol>
       </div>
     </section>

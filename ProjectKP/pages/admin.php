@@ -1,137 +1,108 @@
 <?php
-// filepath: c:\xampp\htdocs\website_sekolah\admin.php
-// Koneksi ke database
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "website_sekolah";
-$conn = mysqli_connect($host, $user, $pass, $db);
+session_start();
 
-// Tambah konten
-if (isset($_POST['tambah'])) {
-  $judul = $_POST['judul'];
-  $tipe = $_POST['tipe'];
-  $isi = $_POST['isi'];
-  $sql = "INSERT INTO konten (judul, tipe, isi) VALUES ('$judul', '$tipe', '$isi')";
-  mysqli_query($conn, $sql);
-  header("Location: admin.php");
-  exit;
+// Atur waktu habis sesi (dalam detik)
+$session_timeout = 600; // 10 menit
+
+// Cek apakah admin sudah login
+if (!isset($_SESSION['admin_loggedin'])) {
+    header("Location: login.php");
+    exit;
 }
 
-// Edit konten
-if (isset($_POST['edit'])) {
-  $id = $_POST['id'];
-  $judul = $_POST['judul'];
-  $tipe = $_POST['tipe'];
-  $isi = $_POST['isi'];
-  $sql = "UPDATE konten SET judul='$judul', tipe='$tipe', isi='$isi' WHERE id=$id";
-  mysqli_query($conn, $sql);
-  header("Location: admin.php");
-  exit;
+// Cek waktu terakhir berinteraksi
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $session_timeout)) {
+    // Sesi habis, alihkan ke halaman login
+    session_unset();
+    session_destroy();
+    header("Location: login.php?timeout=1");
+    exit;
 }
 
-// Hapus konten
-if (isset($_GET['hapus'])) {
-  $id = $_GET['hapus'];
-  $sql = "DELETE FROM konten WHERE id=$id";
-  mysqli_query($conn, $sql);
-  header("Location: admin.php");
-  exit;
-}
+// Perbarui waktu terakhir berinteraksi
+$_SESSION['last_activity'] = time();
 
-// Ambil data konten (kecuali navbar, footer, visi_misi, kontak)
-$query = "SELECT * FROM konten WHERE tipe NOT IN ('navbar','footer','visi_misi','kontak')";
-$result = mysqli_query($conn, $query);
+// Menghubungkan ke database
+require_once '../db_conn.php';
 
-// Untuk form edit
-$editData = null;
-if (isset($_GET['edit'])) {
-  $id = $_GET['edit'];
-  $editQuery = "SELECT * FROM konten WHERE id=$id";
-  $editResult = mysqli_query($conn, $editQuery);
-  $editData = mysqli_fetch_assoc($editResult);
-}
+// Menentukan halaman yang akan dimuat
+$page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Halaman Admin - Manajemen Konten</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f5f7fa; margin: 0; padding: 0; }
-    .container { max-width: 900px; margin: 32px auto; background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);}
-    h2 { color: #0072bc; }
-    table { width: 100%; border-collapse: collapse; margin-top: 24px;}
-    th, td { border: 1px solid #ddd; padding: 8px; text-align: left;}
-    th { background: #0072bc; color: #fff;}
-    tr:nth-child(even) { background: #f2f2f2;}
-    .form-section { margin-top: 32px; }
-    input[type=text], textarea, select { width: 100%; padding: 8px; margin: 6px 0 12px 0; border: 1px solid #ccc; border-radius: 4px;}
-    button { background: #0072bc; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;}
-    button:hover { background: #005fa3;}
-    .aksi-link { color: #0072bc; text-decoration: none; margin-right: 8px;}
-    .aksi-link:hover { text-decoration: underline;}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
 </head>
 <body>
-  <div class="container">
-    <h2>Manajemen Konten Website</h2>
-    <table>
-      <tr>
-        <th>Judul</th>
-        <th>Tipe</th>
-        <th>Isi</th>
-        <th>Aksi</th>
-      </tr>
-      <?php while($row = mysqli_fetch_assoc($result)): ?>
-      <tr>
-        <td><?= htmlspecialchars($row['judul']) ?></td>
-        <td><?= htmlspecialchars($row['tipe']) ?></td>
-        <td><?= htmlspecialchars(substr($row['isi'],0,60)) ?>...</td>
-        <td>
-          <a class="aksi-link" href="admin.php?edit=<?= $row['id'] ?>">Edit</a>
-          <a class="aksi-link" href="admin.php?hapus=<?= $row['id'] ?>" onclick="return confirm('Yakin hapus?')">Hapus</a>
-        </td>
-      </tr>
-      <?php endwhile; ?>
-    </table>
-
-    <div class="form-section">
-      <?php if ($editData): ?>
-      <h3>Edit Konten</h3>
-      <form method="post">
-        <input type="hidden" name="id" value="<?= $editData['id'] ?>">
-        <label>Judul</label>
-        <input type="text" name="judul" value="<?= htmlspecialchars($editData['judul']) ?>" required>
-        <label>Tipe</label>
-        <select name="tipe" required>
-          <option value="berita_mingguan" <?= $editData['tipe']=='berita_mingguan'?'selected':'' ?>>Berita Mingguan</option>
-          <option value="kegiatan_sekolah" <?= $editData['tipe']=='kegiatan_sekolah'?'selected':'' ?>>Kegiatan Sekolah</option>
-          <option value="pencapaian_anak" <?= $editData['tipe']=='pencapaian_anak'?'selected':'' ?>>Pencapaian Anak</option>
-        </select>
-        <label>Isi</label>
-        <textarea name="isi" rows="5" required><?= htmlspecialchars($editData['isi']) ?></textarea>
-        <button type="submit" name="edit">Simpan Perubahan</button>
-        <a href="admin.php" style="margin-left:12px;">Batal</a>
-      </form>
-      <?php else: ?>
-      <h3>Tambah Konten Baru</h3>
-      <form method="post">
-        <label>Judul</label>
-        <input type="text" name="judul" required>
-        <label>Tipe</label>
-        <select name="tipe" required>
-          <option value="berita_mingguan">Berita Mingguan</option>
-          <option value="kegiatan_sekolah">Kegiatan Sekolah</option>
-          <option value="pencapaian_anak">Pencapaian Anak</option>
-        </select>
-        <label>Isi</label>
-        <textarea name="isi" rows="5" required></textarea>
-        <button type="submit" name="tambah">Tambah Konten</button>
-      </form>
-      <?php endif; ?>
+    <header>
+   <?php include 'navbar.php'; ?>
+  </header>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="admin.php?page=dashboard" class="<?= $page == 'dashboard' ? 'active' : '' ?>">Dashboard</a></li>
+            <li><a href="admin.php?page=manage_slider" class="<?= $page == 'manage_slider' ? 'active' : '' ?>">Manajemen Slider</a></li>
+            <li><a href="admin.php?page=manage_students" class="<?= $page == 'manage_students' ? 'active' : '' ?>">Data Siswa</a></li>
+            <li><a href="admin.php?page=manage_staf" class="<?= $page == 'manage_staf' ? 'active' : '' ?>">Data Staf</a></li>
+            <li><a href="admin.php?page=manage_berita" class="<?= $page == 'manage_berita' ? 'active' : '' ?>">Manajemen Berita</a></li>
+            <li><a href="admin.php?page=manage_agenda" class="<?= $page == 'manage_agenda' ? 'active' : '' ?>">Manajemen Agenda</a></li>
+            <li><a href="admin.php?page=manage_galeri" class="<?= $page == 'manage_galeri' ? 'active' : '' ?>">Manajemen Galeri</a></li>
+            <li><a href="admin.php?page=manage_prestasi" class="<?= $page == 'manage_prestasi' ? 'active' : '' ?>">Manajemen Prestasi</a></li>
+            <li><a href="admin.php?page=manage_visi_misi" class="<?= $page == 'manage_visi_misi' ? 'active' : '' ?>">Manajemen Visi & Misi</a></li>
+            <li><a href="admin.php?page=manage_ekstrakurikuler" class="<?= $page == 'manage_ekstrakurikuler' ? 'active' : '' ?>">Manajemen Ekstrakurikuler</a></li>
+            <li><a href="admin.php?page=manage_kontak" class="<?= $page == 'manage_kontak' ? 'active' : '' ?>">Manajemen Pesan Kontak</a></li>
+        </ul>
+        <a href="logout.php" class="logout-btn">Logout</a>
     </div>
-  </div>
+
+    <div class="content">
+        <?php
+        switch($page) {
+            case 'dashboard':
+                echo '<h1>Dashboard Admin</h1>';
+                break;
+            case 'manage_slider':
+                include 'manage_slider.php';
+                break;
+            case 'manage_students':
+                include 'manage_students.php';
+                break;
+            case 'manage_staf':
+                include 'manage_staf.php';
+                break;
+            case 'manage_berita':
+                include 'manage_berita.php';
+                break;
+            case 'manage_agenda':
+                include 'manage_agenda.php';
+                break;
+            case 'manage_galeri':
+                include 'manage_galeri.php';
+                break;
+            case 'manage_prestasi':
+                include 'manage_prestasi.php';
+                break;
+            case 'manage_visi_misi':
+                include 'manage_visi_misi.php';
+                break;
+            case 'manage_ekstrakurikuler':
+                include 'manage_ekstrakurikuler.php';
+                break;
+            case 'manage_kontak':
+                include 'manage_kontak.php';
+                break;
+            default:
+                echo '<h1>Selamat Datang di Dashboard Admin</h1>';
+                echo '<p>Pilih menu di samping untuk mulai mengelola konten website.</p>';
+                break;
+        }
+        ?>
+    </div>
 </body>
 </html>

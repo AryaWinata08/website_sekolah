@@ -1,0 +1,133 @@
+/* Styling untuk halaman admin */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding-top: 60px; /* Tambahkan padding-top untuk memberi ruang di atas */
+}
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #18bc9c;
+    margin-top: 120px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li a {
+    display: block;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background: #18bc9c;
+}
+.content {
+    margin-left: 300px; /* Ditambahkan agar konten tidak tertutup sidebar */
+    margin-top: 25px;
+    padding: 20px;
+    flex-grow: 1;
+}
+.content h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+.logout-btn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    transition: background 0.3s;
+    box-sizing: border-box; /* Ditambahkan untuk memperbaiki lebar */
+}
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+/* Styling untuk form dan tabel di halaman manajemen konten */
+.management-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+}
+h2 {
+    color: #18bc9c;
+}
+.form-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+input[type="text"], input[type="file"], input[type="date"], textarea, select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+button[type="submit"], .action-btn {
+    background: #18bc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+.action-btn.edit {
+    background: #3498db;
+}
+.action-btn.delete {
+    background: #e74c3c;
+}
+.table-container {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background: #18bc9c;
+    color: #fff;
+}
+img.thumbnail {
+    max-width: 150px;
+    height: auto;
+}

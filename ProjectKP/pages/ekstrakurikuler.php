@@ -1,5 +1,11 @@
+<?php 
+require_once '../db_conn.php';
 
+// Ambil semua data ekstrakurikuler dari database
+$sql_ekstrakurikuler = "SELECT * FROM ekstrakurikuler ORDER BY nama_ekstra";
+$result_ekstrakurikuler = $conn->query($sql_ekstrakurikuler);
 
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -18,37 +24,13 @@
     <section class="ekstra-section">
       <h2>Kegiatan Ekstrakurikuler SMAN 2 Singkep</h2>
       <div class="ekstra-list">
+        <?php while($ekstrakurikuler = $result_ekstrakurikuler->fetch_assoc()): ?>
         <div class="ekstra-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Pramuka">
-          <h3>Pramuka</h3>
-          <p>Mengembangkan jiwa kepemimpinan, kemandirian, dan cinta alam melalui kegiatan kepramukaan.</p>
+          <img src="<?php echo htmlspecialchars($ekstrakurikuler['gambar_path']); ?>" alt="<?php echo htmlspecialchars($ekstrakurikuler['nama_ekstra']); ?>">
+          <h3><?php echo htmlspecialchars($ekstrakurikuler['nama_ekstra']); ?></h3>
+          <p><?php echo htmlspecialchars($ekstrakurikuler['deskripsi']); ?></p>
         </div>
-        <div class="ekstra-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Paskibra">
-          <h3>Paskibra</h3>
-          <p>Melatih kedisiplinan dan kekompakan dalam baris-berbaris serta upacara bendera.</p>
-        </div>
-        <div class="ekstra-card">
-          <img src="../assets/images/SMAN2.jpg" alt="PMR">
-          <h3>PMR</h3>
-          <p>Palang Merah Remaja, belajar pertolongan pertama dan kegiatan sosial kemanusiaan.</p>
-        </div>
-        <div class="ekstra-card">
-          <img src="../assets/images/SMAN2.jpg" alt="OSIS">
-          <h3>OSIS</h3>
-          <p>Organisasi Siswa Intra Sekolah, wadah pengembangan kepemimpinan dan kreativitas siswa.</p>
-        </div>
-        <div class="ekstra-card">
-          <img src="../assets/images/SMAN2.jpg" alt="English Club">
-          <h3>English Club</h3>
-          <p>Meningkatkan kemampuan bahasa Inggris melalui diskusi, lomba, dan kegiatan kreatif.</p>
-        </div>
-        <div class="ekstra-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Futsal">
-          <h3>Futsal</h3>
-          <p>Ekstrakurikuler olahraga futsal untuk menyalurkan bakat dan menjaga kebugaran.</p>
-        </div>
-        <!-- Tambahkan ekstrakurikuler lain sesuai kebutuhan -->
+        <?php endwhile; ?>
       </div>
     </section>
     <?php include 'footer.php'; ?>

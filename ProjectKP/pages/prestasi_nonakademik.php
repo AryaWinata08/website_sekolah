@@ -1,5 +1,11 @@
+<?php 
+require_once '../db_conn.php';
 
+// Ambil semua data prestasi non-akademik dari database
+$sql_prestasi = "SELECT * FROM prestasi WHERE tipe = 'non-akademik' ORDER BY id DESC";
+$result_prestasi = $conn->query($sql_prestasi);
 
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -14,29 +20,19 @@
 <body>
   <header>
     <?php include 'navbar.php'; ?>
-    <h1>Prestasi Non Akademik</h1>
   </header>
 
   <main>
     <section class="prestasi-section">
       <h2>Daftar Prestasi Non Akademik</h2>
       <div class="prestasi-list">
+        <?php while($prestasi = $result_prestasi->fetch_assoc()): ?>
         <div class="prestasi-card">
-            <img src="../assets/images/SMAN2.jpg" class="prestasi-foto">
-          <h3>Juara 1 Lomba Futsal Antar SMA Kabupaten</h3>
-          <p>2024 - Tim Futsal SMAN 2 Singkep</p>
+          <img src="<?php echo htmlspecialchars($prestasi['gambar_path']); ?>" alt="<?php echo htmlspecialchars($prestasi['nama_peraih']); ?>" class="prestasi-foto">
+          <h3><?php echo htmlspecialchars($prestasi['judul']); ?></h3>
+          <p class="prestasi-nama"><?php echo htmlspecialchars($prestasi['nama_peraih']); ?></p>
         </div>
-        <div class="prestasi-card">
-            <img src="../assets/images/SMAN2.jpg" class="prestasi-foto">
-          <h3>Juara 2 Lomba Pramuka Tingkat Provinsi</h3>
-          <p>2023 - Regu Pramuka SMAN 2 Singkep</p>
-        </div>
-        <div class="prestasi-card">
-            <img src="../assets/images/SMAN2.jpg" class="prestasi-foto">
-          <h3>Juara 3 Lomba Tari Tradisional</h3>
-          <p>2023 - Ekstrakurikuler Tari</p>
-        </div>
-        <!-- Tambahkan prestasi non akademik lainnya di sini -->
+        <?php endwhile; ?>
       </div>
     </section>
     <?php include 'footer.php'; ?>

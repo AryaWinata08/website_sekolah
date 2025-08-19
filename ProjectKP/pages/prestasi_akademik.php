@@ -1,5 +1,11 @@
+<?php 
+require_once '../db_conn.php';
 
+// Ambil semua data prestasi akademik dari database
+$sql_prestasi = "SELECT * FROM prestasi WHERE tipe = 'akademik' ORDER BY id DESC";
+$result_prestasi = $conn->query($sql_prestasi);
 
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -14,29 +20,19 @@
 <body>
   <header>
      <?php include 'navbar.php'; ?>
-    <h1>Prestasi Akademik</h1>
   </header>
 
   <main>
     <section class="prestasi-section">
       <h2>Daftar Prestasi Akademik</h2>
       <div class="prestasi-list">
+        <?php while($prestasi = $result_prestasi->fetch_assoc()): ?>
         <div class="prestasi-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Andi Saputra" class="prestasi-foto">
-          <h3>Juara 1 Olimpiade Matematika Tingkat Kabupaten</h3>
-          <p class="prestasi-nama">Andi Saputra</p>
+          <img src="<?php echo htmlspecialchars($prestasi['gambar_path']); ?>" alt="<?php echo htmlspecialchars($prestasi['nama_peraih']); ?>" class="prestasi-foto">
+          <h3><?php echo htmlspecialchars($prestasi['judul']); ?></h3>
+          <p class="prestasi-nama"><?php echo htmlspecialchars($prestasi['nama_peraih']); ?></p>
         </div>
-        <div class="prestasi-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Siti Rahmawati" class="prestasi-foto">
-          <h3>Juara 2 Lomba Cerdas Cermat IPA Provinsi</h3>
-          <p class="prestasi-nama">Siti Rahmawati</p>
-        </div>
-        <div class="prestasi-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Budi Santoso" class="prestasi-foto">
-          <h3>Finalis KSN (Kompetisi Sains Nasional) Bidang Fisika</h3>
-          <p class="prestasi-nama">Budi Santoso</p>
-        </div>
-        <!-- Tambahkan prestasi lain sesuai kebutuhan -->
+        <?php endwhile; ?>
       </div>
     </section>
     <?php include 'footer.php'; ?>

@@ -15,9 +15,11 @@
 
 .galeri-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Tiga kolom dengan lebar yang sama */
   gap: 28px;
   margin-top: 20px;
+  max-width: 900px; /* Ditambahkan: Membatasi lebar grid */
+  margin: 20px auto; /* Ditambahkan: Memposisikan grid di tengah */
 }
 
 .galeri-item {
@@ -54,6 +56,7 @@
     padding: 15px 5px;
   }
   .galeri-grid {
+    grid-template-columns: 1fr; /* Kembali ke satu kolom di mobile */
     gap: 14px;
   }
   .galeri-item img {

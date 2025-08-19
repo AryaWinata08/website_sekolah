@@ -1,4 +1,25 @@
+<?php
+// Mengimpor file koneksi database
+require_once '../db_conn.php';
 
+// Proses formulir jika data dikirimkan
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $pesan = $_POST['pesan'];
+
+    // Menyiapkan dan mengeksekusi query SQL
+    $stmt = $conn->prepare("INSERT INTO kontak_messages (nama, email, pesan) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $nama, $email, $pesan);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Pesan Anda berhasil dikirim!'); window.location.href = 'kontak.php';</script>";
+    } else {
+        echo "<script>alert('Maaf, terjadi kesalahan saat mengirim pesan.'); window.location.href = 'kontak.php';</script>";
+    }
+    $stmt->close();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -14,7 +35,6 @@
 <body>
   <header>
     <?php include 'navbar.php'; ?>
-    <h1>Kontak Kami</h1>
   </header>
 
   <main>
@@ -32,7 +52,7 @@
       </div>
       <div class="kontak-form">
         <h2>Kirim Pesan</h2>
-        <form action="#" method="post">
+        <form action="kontak.php" method="post">
           <input type="text" name="nama" placeholder="Nama Anda" required>
           <input type="email" name="email" placeholder="Email Anda" required>
           <textarea name="pesan" rows="5" placeholder="Tulis pesan Anda..." required></textarea>

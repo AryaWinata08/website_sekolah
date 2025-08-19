@@ -1,4 +1,10 @@
+<?php 
+require_once '../db_conn.php';
 
+// Ambil semua data galeri dari database
+$sql_galeri = "SELECT * FROM galeri ORDER BY id DESC";
+$result_galeri = $conn->query($sql_galeri);
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -14,34 +20,18 @@
 <body>
   <header>
     <?php include 'navbar.php'; ?>
-    <h1>Galeri Foto</h1>
   </header>
 
   <main>
     <section class="galeri-section">
       <h2>Dokumentasi Kegiatan SMAN 2 Singkep</h2>
       <div class="galeri-grid">
+        <?php while($galeri = $result_galeri->fetch_assoc()): ?>
         <div class="galeri-item">
-          <img src="../assets/images/SMAN2.jpg" alt="Upacara Bendera">
-          <p class="galeri-caption">Upacara Bendera</p>
+          <img src="<?php echo htmlspecialchars($galeri['gambar_path']); ?>" alt="<?php echo htmlspecialchars($galeri['judul']); ?>">
+          <p class="galeri-caption"><?php echo htmlspecialchars($galeri['judul']); ?></p>
         </div>
-        <div class="galeri-item">
-          <img src="../assets/images/SMAN2.jpg" alt="Kegiatan Pramuka">
-          <p class="galeri-caption">Kegiatan Pramuka</p>
-        </div>
-        <div class="galeri-item">
-          <img src="../assets/images/SMAN2.jpg" alt="Lomba Futsal">
-          <p class="galeri-caption">Lomba Futsal Antar Kelas</p>
-        </div>
-        <div class="galeri-item">
-          <img src="../assets/images/SMAN2.jpg" alt="Pentas Seni">
-          <p class="galeri-caption">Pentas Seni Siswa</p>
-        </div>
-        <div class="galeri-item">
-          <img src="../assets/images/SMAN2.jpg" alt="Kegiatan Literasi">
-          <p class="galeri-caption">Kegiatan Literasi</p>
-        </div>
-        <!-- Tambahkan foto dan judul lain sesuai kebutuhan -->
+        <?php endwhile; ?>
       </div>
     </section>
     <?php include 'footer.php'; ?>

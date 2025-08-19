@@ -1,7 +1,11 @@
+<?php 
+require_once '../db_conn.php';
 
-<link rel="stylesheet" href="../assets/css/navbar.css">
-<link rel="stylesheet" href="../assets/css/berita.css">
+// Ambil semua data berita dari database
+$sql_berita = "SELECT * FROM berita ORDER BY tanggal DESC";
+$result_berita = $conn->query($sql_berita);
 
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -16,38 +20,22 @@
 <body>
   <header>
     <?php include 'navbar.php'; ?>
-    <h1>Berita Sekolah</h1>
   </header>
 
   <main>
     <section class="berita-section">
       <h2>Informasi & Berita Terbaru</h2>
-      <div class="berita-list">
+      <div class="berita-grid">
+        <?php while($berita = $result_berita->fetch_assoc()): ?>
         <div class="berita-card">
-          <img src="../assets/images/SMAN2.jpg" alt="MPLS 2025" class="berita-img">
+          <img src="<?php echo htmlspecialchars($berita['gambar_path']); ?>" alt="<?php echo htmlspecialchars($berita['judul']); ?>" class="berita-img">
           <div class="berita-info">
-            <h3>MPLS 2025 Berjalan Lancar</h3>
-            <span class="berita-date"><i class="fa fa-calendar"></i> 22 Juli 2025</span>
-            <p>Masa Pengenalan Lingkungan Sekolah (MPLS) di SMAN 2 Singkep berlangsung meriah dan penuh semangat. Siswa baru mengikuti berbagai kegiatan edukatif dan kreatif.</p>
+            <h3><?php echo htmlspecialchars($berita['judul']); ?></h3>
+            <span class="berita-date"><i class="fa fa-calendar"></i> <?php echo date('d F Y', strtotime($berita['tanggal'])); ?></span>
+            <p><?php echo htmlspecialchars($berita['deskripsi']); ?></p>
           </div>
         </div>
-        <div class="berita-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Juara Futsal" class="berita-img">
-          <div class="berita-info">
-            <h3>Tim Futsal Raih Juara 1 Tingkat Kabupaten</h3>
-            <span class="berita-date"><i class="fa fa-calendar"></i> 10 Juni 2025</span>
-            <p>Tim futsal SMAN 2 Singkep berhasil meraih juara 1 dalam turnamen futsal antar SMA se-Kabupaten Lingga.</p>
-          </div>
-        </div>
-        <div class="berita-card">
-          <img src="../assets/images/SMAN2.jpg" alt="Literasi" class="berita-img">
-          <div class="berita-info">
-            <h3>Gerakan Literasi Sekolah</h3>
-            <span class="berita-date"><i class="fa fa-calendar"></i> 5 Mei 2025</span>
-            <p>SMAN 2 Singkep mengadakan kegiatan literasi untuk meningkatkan minat baca siswa melalui pojok baca dan lomba menulis cerpen.</p>
-          </div>
-        </div>
-        <!-- Tambahkan berita lain sesuai kebutuhan -->
+        <?php endwhile; ?>
       </div>
     </section>
     <?php include 'footer.php'; ?>

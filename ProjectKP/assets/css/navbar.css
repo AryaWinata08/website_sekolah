@@ -5,17 +5,35 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
+  left: 0;
   z-index: 999;
+}
+
+.navbar-logo {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column; /* Mengatur tata letak menjadi vertikal */
+  align-items: center; /* Meratakan konten ke tengah */
+  gap: 5px; /* Memberi jarak sedikit antara logo dan judul */
 }
 
 .navbar-logo img {
   height: 50px;
 }
 
+.navbar-logo h1 {
+  font-size: 1.2rem; /* Mengubah ukuran judul agar terlihat lebih kecil */
+  color: #2c3e50;
+  margin: 0;
+}
+
 .navbar-menu {
+  flex: 1;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -24,11 +42,13 @@
   list-style: none;
   position: relative;
   z-index: 999;
+  padding: 0;
+  margin: 0;
 }
 
 .navbar-menu ul li {
   position: relative;
-  margin-left: 30px;
+  margin: 0 15px;
 }
 
 .navbar-menu ul li a {
@@ -93,12 +113,25 @@
 @media (max-width: 900px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 10px 15px;
+  }
+  .navbar-logo {
+    justify-content: center;
+    gap: 5px;
+  }
+  .navbar-logo h1 {
+    font-size: 1rem;
+  }
+  .navbar-menu {
+    flex: none;
+    width: 100%;
+    justify-content: center;
   }
   .navbar-menu ul {
     flex-direction: column;
     width: 100%;
+    text-align: center;
   }
   .navbar-menu ul li {
     margin: 0 0 10px 0;

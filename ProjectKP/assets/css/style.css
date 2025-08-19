@@ -8,6 +8,7 @@
 body {
   background-color: #f4f6f8;
   color: #333;
+  padding-top: 100px; /* Tambahkan baris ini. Sesuaikan nilai 100px jika perlu */
 }
 
 footer {
@@ -15,6 +16,10 @@ footer {
   color: white;
   text-align: center;
   padding: 20px 10px;
+}
+
+header h1 {
+  text-align: center;
 }
 
 /* Navbar, dropdown, dan responsifnya di sini (lihat jawaban sebelumnya) */

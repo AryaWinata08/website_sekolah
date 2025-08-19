@@ -13,40 +13,81 @@
   text-align: center;
 }
 
-.struktur-img {
-  text-align: center;
-  margin-bottom: 30px;
+.struktur-list {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 700px;
 }
 
-.struktur-img img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(24,188,156,0.10);
+.struktur-list h3 {
+  color: #18bc9c;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 .struktur-list ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
-  max-width: 500px;
-  margin: 0 auto;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.struktur-list li {
-  margin-bottom: 12px;
-  font-size: 1.08rem;
-  color: #333;
+.struktur-list ul li {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex: 1 1 200px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #2c3e50;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.struktur-list strong {
+/* Styling foto staf */
+.staf-foto {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #18bc9c;
+}
+
+.struktur-list ul li strong {
   color: #18bc9c;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.struktur-list ul li .nip,
+.struktur-list ul li span {
+  color: #2c3e50;
+}
+
+.guru-item {
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: #2c3e50;
+}
+
+.guru-pengajar-list li > strong, .pembina-ekstra-list li > strong {
+  color: #18bc9c;
+  display: block;
+  margin-bottom: 5px;
 }
 
 @media (max-width: 700px) {
   .struktur-section {
     padding: 15px 5px;
-  }
-  .struktur-img img {
-    border-radius: 6px;
   }
 }
