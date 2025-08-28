@@ -8,24 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password FROM admin_users WHERE username = ?");
-    $stmt->bind_param("s", $username);
+    // Menyiapkan dan mengeksekusi query SQL
+    $stmt = $conn->prepare("SELECT id FROM admin_users WHERE username = ? AND password = ?");
+    $stmt->bind_param("ss", $username, $password);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashed_password);
-        $stmt->fetch();
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['admin_loggedin'] = true;
-            $_SESSION['last_activity'] = time(); // Tambahkan baris ini
-            header("Location: admin.php");
-            exit;
-        } else {
-            $error = "Password salah!";
-        }
+        $_SESSION['admin_loggedin'] = true;
+        $_SESSION['last_activity'] = time();
+        header("Location: admin.php");
+        exit;
     } else {
-        $error = "Username tidak ditemukan!";
+        $error = "Username atau password salah!";
     }
     $stmt->close();
 }
